@@ -1,0 +1,32 @@
+projects:
+  - name: 'dotnet-core-webapp'
+    description: ''
+    environments:
+      - slug: 'dev'
+        name: 'Development'
+        configs:
+          - slug: 'dev'
+      - slug: 'stg'
+        name: 'Staging'
+        configs:
+          - slug: 'stg'
+      - slug: 'prd'
+        name: 'Production'
+        configs:
+          - slug: 'prd'
+    secrets:
+      dev:
+          LOGGING: 'Debug'
+          DEBUG: 'true'          
+          SERVER__HOST_NAME: 'localhost'
+          SERVER__PORT: '8443'
+      stg:
+          LOGGING: 'Warning'
+          DEBUG: 'true'          
+          SERVER__HOST_NAME: 'stg.starwarsdadjokes.io'
+          SERVER__PORT: '8080'
+      prd:
+          LOGGING: 'Error'
+          DEBUG: 'false'          
+          SERVER__HOST_NAME: 'prd.starwarsdadjokes.io'
+          SERVER__PORT: '443'

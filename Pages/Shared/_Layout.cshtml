@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+</head>
+<body class="bg-dark text-light">
+    <header>
+        <nav class="navbar navbar-dark bg-dark border-bottom box-shadow mb-3 py-3 justify-content-center">
+            <a class="navbar-brand" href="#">
+                <img src="/img/doppler-logo.png" width="30" height="30" class="d-inline-block align-top rounded" alt=""><span class="ml-2">SecretOps ASP.NET Core DopplerClient</span>
+            </a>
+        </nav>
+    </header>
+    <div class="container mt-4">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+</body>
+</html>
