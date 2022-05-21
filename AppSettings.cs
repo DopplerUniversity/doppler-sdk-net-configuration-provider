@@ -1,4 +1,5 @@
 // Example to show Doppler injected configuration can populate nested classes of configuration values 
+
 public enum Logging
 {
     Trace = 0,
@@ -14,12 +15,28 @@ public class Server
     public string Port { get; set; }
 }
 
+public interface ISecret<T> {
+    public bool Encrypted { get; init; }
+    public string Encryption { get; init; }
+    
+    public T Value { get; init; }
+}
+
+public class ApiKeySecret : ISecret<string>
+{
+    public bool Encrypted { get; init; }
+    public string Encryption { get; init; }
+    public string Value { get; init; }
+}
+
 public class AppSettings
 {
-    public string? DopplerProject { get; set; }
-    public string? DopplerConfig { get; set; }
-    public string? DopplerEnvironment { get; set; }
-    public bool Debug { get; set; } = false;
-    public Logging Logging { get; set; } = Logging.Error;
-    public Server Server { get; set; }
+    public string? DopplerProject { get; init; }
+    public string? DopplerConfig { get; init; }
+    public string? DopplerEnvironment { get; init; }
+    
+    public ApiKeySecret ApiKey  { get; init; }
+    public bool Debug { get; init; } = false;
+    public Logging Logging { get; init; } = Logging.Error;
+    public Server Server { get; init; }
 }

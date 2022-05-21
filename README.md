@@ -48,6 +48,12 @@ builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
 });
 ```
 
+Then you can run a one-time setup command to create the JSON file using the Doppler CLI:
+
+```sh
+echo "{ \"DopplerToken\": \""$(doppler configs tokens create dev --plain)"\" }" > dopplerclientconfig.Development.json
+```
+
 What the right approach will be may differ from team to team, but as long as you've done everything to avoid hard-coding the Service Token where it may end up where it's not supposed to, you're on the right track.
 
 ## Feedback Welcome!
