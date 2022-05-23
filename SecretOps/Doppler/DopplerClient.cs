@@ -1,12 +1,13 @@
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
 using static System.String;
+
+namespace SecretOps.Doppler;
 
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable FieldCanBeMadeReadOnly.Global
 // ReSharper disable ConvertToConstant.Global
-
-namespace SecretOps.DopplerClient;
 
 using DopplerSecrets = Dictionary<string, string>;
 

@@ -405,7 +405,9 @@ ASALocalRun/
 .localhistory/
 
 # Other
-dopplerclientconfig.Development.json
+dopplerClientConfig.Development.json
 web.config
 *.swp
 *.*~
+.DS_Store
+.idea

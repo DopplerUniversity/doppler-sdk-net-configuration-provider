@@ -1,5 +1,6 @@
 using System.Text.Json;
-using SecretOps.DopplerClient;
+using SecretOps.Doppler;
+using DopplerClientSampleApp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,10 +25,11 @@ builder.Services.AddRazorPages();
 //
 // But to avoid hard-coding the "DopplerToken" value in your launchSettings.json or other config file that could accidentally get
 // committed, you can opt to store the Service Token in a config file that is only designed to be used locally.
+
 builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
 {
     // Ensure this file is in your .gitignore
-    config.AddJsonFile("dopplerclientconfig.Development.json", optional: true);
+    config.AddJsonFile("dopplerClientConfig.Development.json", optional: true);
 });
 
 var dopplerClientConfig = builder.Configuration.Get<DopplerClientConfiguration>();
@@ -71,14 +73,27 @@ foreach (var secret in dopplerClientResponse.Secrets) builder.Configuration[secr
 
 // This allows you to seamlessly bind complex nested objects from Doppler, simply by using ASP.NET Core's standard
 // convention of two underscores in an environment variable when naming the secret in Doppler.
-// For example, SERVER__HOST_NAME in Doppler is transformed to Server:HostName
-// Check out the `doppler-template.yaml` file in the root of this repository and the 
+
+// For example, SMTP__USER_NAME in Doppler is transformed to Smtp:UserName
+
+// Check out the `doppler-template.yaml` file in the root of this repository for additional formatting examples.
 
 // You can bind an instance during initialization
 var appSettings = builder.Configuration.Get<AppSettings>();
 
-// And perhaps even better, enable AppSettings to injected where required thanks to ASP.NET Core Dependency injection
+// Provide easy access to AppSettings without a global singleton thanks to ASP.NET Core Dependency injection
 builder.Services.Configure<AppSettings>(builder.Configuration);
+
+// Which can then be accessed with something like the following, e.g. in a Model
+
+// public class MyModel : PageModel
+// {
+//     public MyModel(IOptions<AppSettings> appSettings)
+//     {
+//         AppSettings appSettings = appSettings.Value;
+//     }
+// }
+
 
 
 // 3.2 JSON binding

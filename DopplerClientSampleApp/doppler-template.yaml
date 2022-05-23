@@ -1,0 +1,28 @@
+projects:
+  - name: 'dotnet-core-webapp'
+    description: ''
+    environments:
+      - slug: 'dev'
+        name: 'Development'
+        configs:
+          - slug: 'dev'
+      - slug: 'stg'
+        name: 'Staging'
+        configs:
+          - slug: 'stg'
+      - slug: 'prd'
+        name: 'Production'
+        configs:
+          - slug: 'prd'
+    secrets:
+      dev:
+          LOGGING: 'Debug'
+          DEBUG: 'true'          
+          SMTP__SERVER: 'smtp.jedi-academy.com'          
+          SMTP__PORT: '587'
+          SMTP__FROM_ADDRESS: 'noreply@jedi-academy.com'
+          SMTP__USER_NAME: 'yoda'
+          SMTP__PASS_WORD: 'XTsi!uYx4*k-aL@-'
+          API_KEY__ENCRYPTED: 'true'
+          API_KEY__ENCRYPTION: 'AES'
+          API_KEY__VALUE: 'U2FsdGVkX18Dwip1FZV9HVZCTJQbXc7RlESCXIZyWEBVOrNiZAMdkQvixvNVw6R7'

@@ -1,4 +1,7 @@
-namespace SecretOps.DopplerClient;
+using SecretOps;
+using SecretOps.Doppler;
+
+namespace SecretOps.Doppler;
 
 // ReSharper disable once FieldCanBeMadeReadOnly.Global
 public class DopplerClientResponseConsoleDebugger

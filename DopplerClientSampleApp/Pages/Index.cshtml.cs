@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Options;
 
-namespace SecretOps.Pages;
+namespace DopplerClientSampleApp.Pages;
 
 public class IndexModel : PageModel
 {
