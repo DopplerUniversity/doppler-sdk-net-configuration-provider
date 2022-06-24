@@ -3,12 +3,11 @@ using System.Net.Http.Json;
 using System.Text;
 using static System.String;
 
-namespace SecretOps.Doppler;
+namespace DopplerSDK.ConfigurationProvider;
 
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable FieldCanBeMadeReadOnly.Global
 // ReSharper disable ConvertToConstant.Global
-
 using DopplerSecrets = Dictionary<string, string>;
 
 public static class DopplerNameTransformers
@@ -26,8 +25,8 @@ public static class DopplerNameTransformers
 
 public class DopplerClientConfiguration
 {
-    public string? DopplerToken { get; init; } = Empty;
-    public string DopplerNameTransformer { get; init; } = DopplerNameTransformers.DotNet;
+    public string? DopplerToken { get; set; } = Empty;
+    public string DopplerNameTransformer { get; set; } = DopplerNameTransformers.DotNet;
 }
 
 public class DopplerClientResponse

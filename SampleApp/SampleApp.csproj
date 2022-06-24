@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>SampleApp</RootNamespace>
+        <TargetFramework>net6.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+        <AssemblyName>SampleApp</AssemblyName>
+        <Company></Company>
+        <Product></Product>
+        <PackageVersion/>
+        <Authors/>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\DopplerSDK.ConfigurationProvider\DopplerSDK.ConfigurationProvider.csproj"/>
+    </ItemGroup>
+
+</Project>

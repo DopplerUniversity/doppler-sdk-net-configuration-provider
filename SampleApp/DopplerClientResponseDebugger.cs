@@ -1,7 +1,6 @@
-using SecretOps;
-using SecretOps.Doppler;
+using DopplerSDK.ConfigurationProvider;
 
-namespace SecretOps.Doppler;
+namespace SampleApp;
 
 // ReSharper disable once FieldCanBeMadeReadOnly.Global
 public class DopplerClientResponseConsoleDebugger
@@ -11,10 +10,12 @@ public class DopplerClientResponseConsoleDebugger
 
     private readonly IEnumerable<string> _unmaskedSecretKeys = new List<string>
     {
-        "DopplerProject", "DopplerEnvironment", "DopplerConfig", "DOPPLER_PROJECT", "DOPPLER_ENVIRONMENT", "DOPPLER_CONFIG"
+        "DopplerProject", "DopplerEnvironment", "DopplerConfig", "DOPPLER_PROJECT", "DOPPLER_ENVIRONMENT",
+        "DOPPLER_CONFIG"
     };
 
-    public DopplerClientResponseConsoleDebugger(DopplerClientResponse dopplerClientResponse, bool revealSecretValues = false,
+    public DopplerClientResponseConsoleDebugger(DopplerClientResponse dopplerClientResponse,
+        bool revealSecretValues = false,
         IEnumerable<string>? unmaskedSecretKeys = null)
     {
         _revealSecretValues = revealSecretValues;

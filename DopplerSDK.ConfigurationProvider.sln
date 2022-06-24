@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecretOps", "SecretOps\SecretOps.csproj", "{DEA13693-1855-44EA-9750-F9B99186C7B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DopplerSDK.ConfigurationProvider", "DopplerSDK.ConfigurationProvider\DopplerSDK.ConfigurationProvider.csproj", "{DEA13693-1855-44EA-9750-F9B99186C7B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DopplerClientSampleApp", "DopplerClientSampleApp\DopplerClientSampleApp.csproj", "{23055C31-70B1-4C6F-9ABE-8ADF11F1ED0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "SampleApp\SampleApp.csproj", "{23055C31-70B1-4C6F-9ABE-8ADF11F1ED0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

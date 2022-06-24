@@ -1,6 +1,5 @@
-using System.Text.Json;
-using SecretOps.Doppler;
-using DopplerClientSampleApp;
+using DopplerSDK.ConfigurationProvider;
+using SampleApp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,10 +25,10 @@ builder.Services.AddRazorPages();
 // But to avoid hard-coding the "DopplerToken" value in your launchSettings.json or other config file that could accidentally get
 // committed, you can opt to store the Service Token in a config file that is only designed to be used locally.
 
-builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+builder.Host.ConfigureAppConfiguration((_, config) =>
 {
     // Ensure this file is in your .gitignore
-    config.AddJsonFile("dopplerClientConfig.Development.json", optional: true);
+    config.AddJsonFile("dopplerClientConfig.Development.json", true);
 });
 
 var dopplerClientConfig = builder.Configuration.Get<DopplerClientConfiguration>();
@@ -61,7 +60,7 @@ var dopplerClientResponse = await dopplerClient.FetchSecretsAsync();
 // if (!dopplerClientResponse.IsSuccess) Console.WriteLine(dopplerClientResponse.StatusMessage);
 
 // If secrets were fetched successfully, you will now have a Dictionary<string, string> of secrets
-Console.WriteLine(($"Secrets fetched: ${dopplerClientResponse.Secrets.Count}"));
+Console.WriteLine($"Secrets fetched: ${dopplerClientResponse.Secrets.Count}");
 
 
 // Step 3. Working with Secrets
@@ -95,12 +94,11 @@ builder.Services.Configure<AppSettings>(builder.Configuration);
 // }
 
 
-
 // 3.2 JSON binding
 
 // If you wanted class binding but didn't want to inject configuration values, you can deserialize the Secrets to JSON
 // to bind to a class but this is not nearly as robust as configuration value binding and you'll likely need to write
-// a custom serializer to get things working, e.g. the below fails parsing the "true" or"True" to a booelan type
+// a custom serializer to get things working, e.g. the below fails parsing the "true" or"True" to a boolean type
 // JsonSerializer.Deserialize<AppSettings>(JsonSerializer.Serialize(dopplerClientResponse.Secrets));
 
 // 3.3 Dictionary value access
@@ -108,28 +106,10 @@ builder.Services.Configure<AppSettings>(builder.Configuration);
 // And of course, you can also pull a value directly from the `Secrets` dictionary
 var debug = bool.Parse(dopplerClientResponse.Secrets["Debug"]);
 
+// Output Doppler secrets in terminal for testing purposes  
+new DopplerClientResponseConsoleDebugger(dopplerClientResponse, revealSecretValues: true).Write();
 
 var app = builder.Build();
-
-// Step 4. If you want to debug from the Console
-
-// The simple nature of the app is to give you an index page where you can test that secret values are being bound as expected.
-
-// You can also debug secret values from the terminal by using the DopplerClientResponseConsoleDebugger.
-// You can opt to unmask all secrets or just a select
-
-if (app.Environment.IsDevelopment())
-{
-    new DopplerClientResponseConsoleDebugger(dopplerClientResponse: dopplerClientResponse, revealSecretValues: true).Write();   
-}
-
-
-// Step 5. Take a Test Drive
-
-// This in-code documentation approach was taken at this time to make feedback and suggested improvements easier by way of
-// pull requests on this repo.
-
-// Simply follow the steps in the README.md to see how this all comes together.
 
 
 // Configure the HTTP request pipeline.

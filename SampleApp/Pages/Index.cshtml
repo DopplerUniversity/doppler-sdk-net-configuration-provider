@@ -1,5 +1,5 @@
 ﻿@page
-@model DopplerClientSampleApp.Pages.IndexModel
+@model SampleApp.Pages.IndexModel
 @{
     ViewData["Title"] = "SecretOps ASP.NET Core DopplerClient";
 }
@@ -7,34 +7,34 @@
 <div class="row justify-content-center">
     <div class="col-8 text-center">
         <p class="lead">Fetched Doppler secrets injected into builder.Configuration so classes can request an AppSettings instance via Dependency Injection.</p>
-        
+
         <h2 class="h5 mt-5">Doppler Meta</h2>
 
         <table class="table table-dark table-striped table-bordered mt-4">
             <thead class="thead-light">
-                <tr>
-                    <th scope="col">Key</th>
-                    <th scope="col">Value</th>
-                </tr>
+            <tr>
+                <th scope="col">Key</th>
+                <th scope="col">Value</th>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Doppler Project</td>
-                    <td>@Model.AppSettings.DopplerProject</td>
-                </tr>
-                <tr>
-                    <td>Doppler Environment</td>
-                    <td>@Model.AppSettings.DopplerEnvironment</td>
-                </tr>
-                <tr>
-                    <td>Doppler Config</td>
-                    <td>@Model.AppSettings.DopplerConfig</td>
-                </tr>
+            <tr>
+                <td>Doppler Project</td>
+                <td>@Model.AppSettings.DopplerProject</td>
+            </tr>
+            <tr>
+                <td>Doppler Environment</td>
+                <td>@Model.AppSettings.DopplerEnvironment</td>
+            </tr>
+            <tr>
+                <td>Doppler Config</td>
+                <td>@Model.AppSettings.DopplerConfig</td>
+            </tr>
             </tbody>
         </table>
-        
+
         <h2 class="h5 mt-5">Single Keys</h2>
-                
+
         <table class="table table-dark table-striped table-bordered mt-4">
             <thead class="thead-light">
             <tr>
@@ -53,7 +53,7 @@
             </tr>
             </tbody>
         </table>
-        
+
         <h2 class="h5 mt-5">Stmp Nested Class</h2>
 
         <table class="table table-dark table-striped table-bordered mt-4">
@@ -86,22 +86,22 @@
             </tr>
             </tbody>
         </table>
-        
+
         <h2 class="h5 mt-5 mb-3">Secret Value as Class via Interface</h2>
-        
+
         <p class="lead">Example of creating an interface that every secret must implement to ensure consistency and for use cases such as each secret requiring metadata fields.</p>
 
         <table class="table table-dark table-striped table-bordered mt-4">
             <thead class="thead-light">
-                <tr>
-                    <th scope="col" colspan="2">ApiKey</th>
-                </tr>
+            <tr>
+                <th scope="col" colspan="2">ApiKey</th>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Encrypted</td>
-                    <td>@Model.AppSettings.ApiKey.Encrypted</td>
-                </tr>
+            <tr>
+                <td>Encrypted</td>
+                <td>@Model.AppSettings.ApiKey.Encrypted</td>
+            </tr>
             <tr>
                 <td>Encryption</td>
                 <td>@Model.AppSettings.ApiKey.Encryption</td>
@@ -111,6 +111,6 @@
                 <td>@Model.AppSettings.ApiKey.Value</td>
             </tr>
             </tbody>
-        </table>        
+        </table>
     </div>
 </div>

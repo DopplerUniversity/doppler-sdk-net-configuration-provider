@@ -2,7 +2,7 @@
 
 // A production example would need to decide on defaults, which fields are required vs. nullable and empty
 
-namespace DopplerClientSampleApp;
+namespace SampleApp;
 
 public enum Logging
 {
@@ -22,7 +22,8 @@ public class Smtp
     public string Password { get; set; }
 }
 
-public interface ISecret<T> {
+public interface ISecret<T>
+{
     public bool Encrypted { get; init; }
     public string Encryption { get; init; }
     public T Value { get; init; }
@@ -40,8 +41,8 @@ public class AppSettings
     public string DopplerProject { get; init; }
     public string DopplerConfig { get; init; }
     public string DopplerEnvironment { get; init; }
-    
-    public ApiKeySecret ApiKey  { get; init; }
+
+    public ApiKeySecret ApiKey { get; init; }
     public bool Debug { get; init; } = false;
     public Logging Logging { get; init; } = Logging.Error;
     public Smtp Smtp { get; init; }
