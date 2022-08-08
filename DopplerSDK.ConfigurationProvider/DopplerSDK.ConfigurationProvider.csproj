@@ -6,7 +6,8 @@
         <Authors>Ryan Blunden</Authors>
         <Copyright>Copyright Doppler, Inc 2022. All rights reserved.</Copyright>
         <Description></Description>
-        <TargetFrameworks>net462;net47;net471;net48;netstandard2.0;netstandard2.1;.net5.0;net6.0;</TargetFrameworks>
+        <TargetFrameworks>
+          <!--net462;-->netstandard2.0;net6.0</TargetFrameworks>
         <Version>0.1.0</Version>
         <FileVersion>0.1.0</FileVersion>
         <PackageId>DopplerSDK.ConfigurationProvider</PackageId>
@@ -50,7 +51,7 @@
         </PackageReference>
     </ItemGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' == 'net462' or '$(TargetFramework)' == 'net47' or '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1'">
+    <ItemGroup Condition="'$(TargetFramework)' == 'net462' or '$(TargetFramework)' == 'netstandard2.0'">
         <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
     </ItemGroup>
 
@@ -67,35 +68,11 @@
         <AssemblyTitle>DopplerClient .NET Framework 4.6.2</AssemblyTitle>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(TargetFramework)' == 'net47'">
-        <AssemblyTitle>DopplerClient .NET Framework 4.7</AssemblyTitle>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(TargetFramework)' == 'net471'">
-        <AssemblyTitle>DopplerClient .NET Framework 4.7.1</AssemblyTitle>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
-        <AssemblyTitle>DopplerClient .NET Framework 4.7.2</AssemblyTitle>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(TargetFramework)' == 'net8'">
-        <AssemblyTitle>DopplerClient .NET Framework 4.8</AssemblyTitle>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
         <AssemblyTitle>DopplerClient .NET Standard 2.0</AssemblyTitle>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
-        <AssemblyTitle>DopplerClient .NET Standard 2.1</AssemblyTitle>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(TargetFramework)'=='net5.0'">
-        <AssemblyTitle>DopplerClient .NET 5</AssemblyTitle>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(TargetFramework)'=='net6.0'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='net6.0'">
         <AssemblyTitle>DopplerClient .NET 6</AssemblyTitle>
     </PropertyGroup>
 

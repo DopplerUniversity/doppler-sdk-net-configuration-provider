@@ -29,9 +29,14 @@ builder.Host.ConfigureAppConfiguration((_, config) =>
 {
     // Ensure this file is in your .gitignore
     config.AddJsonFile("dopplerClientConfig.Development.json", true);
+
 });
 
-var dopplerClientConfig = builder.Configuration.Get<DopplerClientConfiguration>();
+
+//var dopplerClientConfig = builder.Configuration.Get<DopplerClientConfiguration>();
+
+// Fetch a token from the local CLI instance on local development environments.
+var dopplerClientConfig = new DopplerClientConfiguration() { RuntimeTokenFetch = builder.Environment.IsDevelopment() };
 
 // Which is equivalent to:
 // var dopplerClientConfig = new DopplerClientConfiguration() { DopplerToken = builder.Configuration["DopplerToken"] };
